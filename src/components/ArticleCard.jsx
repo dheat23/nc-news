@@ -1,6 +1,9 @@
+import {Link} from 'react-router-dom'
+
 const ArticleCard = ({ article }) => {
   const formattedTime = new Date(article.created_at).toLocaleString();
   return (
+    <Link to={`/articles/${article.article_id}`}>
     <div className="article-card">
       <p className="article-card-author">{article.author}</p>
       <p className="article-card-date">{formattedTime}</p>
@@ -8,6 +11,7 @@ const ArticleCard = ({ article }) => {
       <p className="article-card-votes">{article.votes} votes</p>
       <p className="article-card-comments">{article.comment_count} comments</p>
     </div>
+    </Link>
   );
 };
 

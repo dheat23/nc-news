@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import getAllArticles from "../utils/utils";
+import {getAllArticles} from "../utils/utils";
 import ArticleCard from "./ArticleCard";
 const ArticlesList = () => {
   const [articles, setArticles] = useState([]);
