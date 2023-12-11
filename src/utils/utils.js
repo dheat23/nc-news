@@ -15,4 +15,11 @@ function getArticleById(id) {
     })
 };
 
-export {getAllArticles, getArticleById}
+function getCommentsByArticleId(id) {
+    return instance.get(`articles/${id}/comments`)
+    .then(({data}) => {
+        return data.comments
+    })
+}
+
+export {getAllArticles, getArticleById, getCommentsByArticleId}
