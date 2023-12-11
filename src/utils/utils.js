@@ -1,10 +1,11 @@
-import axios from "axios"
-
+import axios from "axios";
+const instance = axios.create({
+  baseURL: "https://dh-news-server.onrender.com/api/",
+});
 const getAllArticles = () => {
-    return axios.get("https://dh-news-server.onrender.com/api/articles")
-    .then(({data}) => {
-        return data.articles
-    })
-}
+  return instance.get("/articles").then(({ data }) => {
+    return data.articles;
+  });
+};
 
-export default getAllArticles
+export default getAllArticles;
