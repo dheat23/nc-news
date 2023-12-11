@@ -6,7 +6,6 @@ const ArticlesList = () => {
 
   useEffect(() => {
     getAllArticles().then((articles) => {
-        console.log(articles[0])
       setArticles(articles);
     });
   }, []);
