@@ -25,6 +25,10 @@ header nav a {
 #articles-list {
   text-align: center;
 }
+#articles-list a {
+  text-decoration: none;
+}
+
 
 .article-card {
   border: 2px solid black;
@@ -34,6 +38,13 @@ header nav a {
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto auto auto;
   gap: 10px;
+  text-decoration: none;
+  color: black;
+  transition-duration: 0.2s;
+}
+
+.article-card:hover {
+  background-color: lightgray;
 }
 
 .article-card-author .article-card-date{
