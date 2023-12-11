@@ -17,7 +17,7 @@ const SingleArticle = () => {
             <section id="single-article">
                 <p className="single-article-author">{article.author}</p>
                 <p className="single-article-date">{article.created_at}</p>
-                <h3 className="single-article-title">{article.title}</h3>
+                <h2 className="single-article-title">{article.title}</h2>
                 <img className="single-article-img" src={article.article_img_url} />
                 <p className="single-article-body">{article.body}</p>
                 <p className="single-article-votes">{article.votes} votes</p>
