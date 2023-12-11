@@ -15,9 +15,13 @@ const SingleArticle = () => {
     return (
         <div id="single-article-page">
             <section id="single-article">
-                <h2>{article.title}</h2>
-                <img src={article.article_img_url} />
-                <p>{article.body}</p>
+                <p className="single-article-author">{article.author}</p>
+                <p className="single-article-date">{article.created_at}</p>
+                <h3 className="single-article-title">{article.title}</h3>
+                <img className="single-article-img" src={article.article_img_url} />
+                <p className="single-article-body">{article.body}</p>
+                <p className="single-article-votes">{article.votes} votes</p>
+                <p className="single-article-comments">{article.comment_count} comments</p>
             </section>
         </div>
     )
