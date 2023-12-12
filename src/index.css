@@ -122,7 +122,25 @@ header nav a {
   grid-column: 2 / 3;
   margin-top: 10px;
 }
-
+#comment-adder h3{
+  text-align: center;
+}
+#comment-adder-form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+}
+#comment-adder-text {
+  margin: 10px;
+  padding: 5px;
+}
+#comment-adder-btn {
+  max-width: 300px;
+  
+}
 .comment-card {
   display: grid;
   grid-template-columns: 1fr 2fr;

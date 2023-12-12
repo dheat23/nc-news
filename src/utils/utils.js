@@ -22,4 +22,15 @@ function getCommentsByArticleId(id) {
     })
 }
 
-export {getAllArticles, getArticleById, getCommentsByArticleId}
+function postComment(id, user, text) {
+    const postBody = {
+        username: user,
+        body: text
+    }
+    return instance.post(`articles/${id}/comments`, postBody)
+    .then(({data}) => {
+        return data.comment
+    })
+}
+
+export {getAllArticles, getArticleById, getCommentsByArticleId, postComment}

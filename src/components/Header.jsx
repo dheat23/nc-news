@@ -10,7 +10,7 @@ const Header = () => {
             <Link to='/articles'>Articles</Link>
             <Link to='/topics'>Topics</Link>
         </nav>
-        <p>Logged in as {user}</p>
+        <p>Logged in as: {user}</p>
     </header>)
 }
 
