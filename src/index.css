@@ -12,6 +12,15 @@
   background-color: black;
   margin: 10px;
 }
+
+.success {
+  color: white;
+  border: 1px solid black;
+  padding: 5px;
+  text-align: center;
+  background-color: green;
+  margin: 10px;
+}
 header {
   border: 2px solid black;
   padding: 5px;
