@@ -8,7 +8,7 @@ const SingleArticle = () => {
     const {article_id} = useParams();
     const [article, setArticle] = useState([]);
     const [comments, setComments] = useState([]);
-    const [showComments, setShowComments] = useState(false);
+    const [showComments, setShowComments] = useState(true);
     const [error, setError] = useState(false);
     useEffect(()=>{
         getArticleById(article_id)
