@@ -7,6 +7,7 @@ import CommentAdder from "./CommentAdder";
 const SingleArticle = () => {
     const {article_id} = useParams();
     const [article, setArticle] = useState([]);
+    const [comments, setComments] = useState([]);
     const [showComments, setShowComments] = useState(true)
     useEffect(()=>{
         getArticleById(article_id)
@@ -29,9 +30,9 @@ const SingleArticle = () => {
                 <p className="single-article-comments">{article.comment_count} comments</p>
                 
             </section>
-            <CommentAdder article_id={article_id}/>
+            <CommentAdder article_id={article_id} setComments={setComments}/>
             <button className="show-comments-btn" onClick={handleCommentsClick}>{showComments ? "Hide Comments" : "Show Comments"}</button>
-            {showComments === true && <CommentsList />}
+            {showComments === true && <CommentsList comments={comments} setComments={setComments}/>}
         </div>
     )
 }

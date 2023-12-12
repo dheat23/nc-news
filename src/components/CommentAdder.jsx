@@ -2,21 +2,28 @@ import { useContext, useState } from "react";
 import { UserContext } from "../contexts/UserContext";
 import { postComment } from "../utils/utils";
 
-const CommentAdder = ({article_id}) => {
+const CommentAdder = ({article_id, setComments}) => {
   const { user } = useContext(UserContext);
   const [input, setInput] = useState("");
+  const [posting, setPosting] = useState(false);
 
   function handleInput(e) {
     setInput(e.target.value)
   }
   function handleSubmit(e) {
     e.preventDefault();
+    setPosting(true)
     postComment(article_id, user, input)
     .then((comment) => {
-        
+        setPosting(false)
+        setComments((currComments) => {
+            return [comment, ...currComments]
+        })
     })
     setInput("")
-
+  }
+  if(posting) {
+    return <p>Posting comment..</p>
   }
   return (
     <div id="comment-adder">
