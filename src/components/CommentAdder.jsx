@@ -22,15 +22,13 @@ const CommentAdder = ({article_id, setComments}) => {
     })
     setInput("")
   }
-  if(posting) {
-    return <p>Posting comment..</p>
-  }
+  
   return (
     <div id="comment-adder">
       <h3>Add a comment</h3>
       <form id="comment-adder-form" onSubmit={handleSubmit}>
         <textarea onChange={handleInput} id="comment-adder-text" cols={40} rows={5} name="comment-text" placeholder="write your comment here.." value={input}/>
-        <button id="comment-adder-btn">Submit</button>
+        <button className={posting ? "disabled-btn" : ""} id="comment-adder-btn">Submit</button>
       </form>
     </div>
   );
