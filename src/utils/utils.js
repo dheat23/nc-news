@@ -22,6 +22,14 @@ function getCommentsByArticleId(id) {
     })
 }
 
+function patchArticleVotes(id, inc_votes) {
+    const patchBody = {inc_votes}
+    return instance.patch(`articles/${id}`, patchBody)
+    .then(({data}) => {
+        return data.article
+    })
+}
+
 function postComment(id, user, text) {
     const postBody = {
         username: user,
@@ -33,4 +41,4 @@ function postComment(id, user, text) {
     })
 }
 
-export {getAllArticles, getArticleById, getCommentsByArticleId, postComment}
+export {getAllArticles, getArticleById, getCommentsByArticleId, patchArticleVotes, postComment}
