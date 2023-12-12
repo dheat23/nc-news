@@ -48,7 +48,7 @@ const SingleArticle = () => {
                 <p className="single-article-votes">{article.votes} votes</p>
                 
                 <button className="upvote-btn" onClick={()=>{handleVoteClick("up")}}>Upvote!</button>
-                <button className="downvote-btn" onClick={()=>{handleVoteClick("down")}}>Downote!</button>
+                <button className="downvote-btn" onClick={()=>{handleVoteClick("down")}}>Downvote!</button>
                 {error === true && <p className="error">An error occurred when voting, try again later</p>}
                 <p className="single-article-comments">{article.comment_count} comments</p>
                 <button className="show-comments-btn" onClick={handleCommentsClick}>{showComments ? "Hide Comments" : "Show Comments"}</button>
