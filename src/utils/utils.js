@@ -22,4 +22,11 @@ function getCommentsByArticleId(id) {
     })
 }
 
-export {getAllArticles, getArticleById, getCommentsByArticleId}
+function patchArticleVotes(id, inc_votes) {
+    const patchBody = {inc_votes}
+    return instance.patch(`articles/${id}`, patchBody)
+    .then(({data}) => {
+        return data.article
+    })
+}
+export {getAllArticles, getArticleById, getCommentsByArticleId, patchArticleVotes}
