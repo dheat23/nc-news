@@ -26,6 +26,9 @@ const SingleArticle = () => {
             newVotes = -1
         }
         patchArticleVotes(article_id, newVotes)
+        .then(()=>{
+            setError(false)
+        })
         .catch((err)=>{
             setError(true)
             setArticle((currArticle) => {
