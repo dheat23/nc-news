@@ -41,4 +41,8 @@ function postComment(id, user, text) {
     })
 }
 
-export {getAllArticles, getArticleById, getCommentsByArticleId, patchArticleVotes, postComment}
+function deleteComment(id) {
+    return instance.delete(`comments/${id}`)
+}
+
+export {getAllArticles, getArticleById, getCommentsByArticleId, patchArticleVotes, postComment, deleteComment}
