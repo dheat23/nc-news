@@ -4,13 +4,17 @@ import ArticleCard from "./ArticleCard";
 import { ColorRing } from "react-loader-spinner";
 import { useSearchParams } from "react-router-dom";
 import TopicFilter from "./TopicFilter";
+import SortBar from "./SortBar";
 const ArticlesList = () => {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchParams, setSearchParams] = useSearchParams();
   const selectedTopic = searchParams.get("topic");
+  const selectedSort = searchParams.get("sort");
+  const selectedOrder = searchParams.get("order");
+  console.log(searchParams)
   useEffect(() => {
-    getAllArticles(selectedTopic).then((articles) => {
+    getAllArticles(selectedTopic, selectedSort, selectedOrder).then((articles) => {
       setArticles(articles);
       setLoading(false)
     });
@@ -31,6 +35,7 @@ const ArticlesList = () => {
     <section id="articles-list">
       <h2>{selectedTopic ? "" : "All "}Articles{selectedTopic ? ` about ${selectedTopic}` : ""}</h2>
       <TopicFilter selectedTopic={selectedTopic}/>
+      <SortBar setSearchParams={setSearchParams}/>
       <ul>
         {articles.map((article) => {
           return (

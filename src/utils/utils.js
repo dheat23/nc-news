@@ -2,10 +2,19 @@ import axios from "axios";
 const instance = axios.create({
   baseURL: "https://dh-news-server.onrender.com/api",
 }); 
-function getAllArticles(topic) {
+function getAllArticles(topic, sort, order) {
     let queryStr = "/articles"
+    if (topic || sort || order) {
+        queryStr += "?"
+    }
     if (topic !== null) {
-        queryStr += `?topic=${topic}`
+        queryStr += `topic=${topic}`
+    }
+    if (sort) {
+        queryStr += `${topic ? "&" : ""}sort_by=${sort}`
+    }
+    if (order) {
+        queryStr += `${topic || sort ? "&" : ""}order=${order}`
     }
   return instance.get(queryStr).then(({ data }) => {
     return data.articles;
