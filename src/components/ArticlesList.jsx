@@ -2,16 +2,19 @@ import { useEffect, useState } from "react";
 import {getAllArticles} from "../utils/utils";
 import ArticleCard from "./ArticleCard";
 import { ColorRing } from "react-loader-spinner";
+import { useSearchParams } from "react-router-dom";
+import TopicFilter from "./TopicFilter";
 const ArticlesList = () => {
   const [articles, setArticles] = useState([]);
-  const [loading, setLoading] = useState(true)
-
+  const [loading, setLoading] = useState(true);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const selectedTopic = searchParams.get("topic");
   useEffect(() => {
-    getAllArticles().then((articles) => {
+    getAllArticles(selectedTopic).then((articles) => {
       setArticles(articles);
       setLoading(false)
     });
-  }, []);
+  }, [searchParams]);
 
   if(loading) {
     return <ColorRing
@@ -26,7 +29,8 @@ const ArticlesList = () => {
   }
   return (
     <section id="articles-list">
-      <h2>Articles</h2>
+      <h2>{selectedTopic ? "" : "All "}Articles{selectedTopic ? ` about ${selectedTopic}` : ""}</h2>
+      <TopicFilter selectedTopic={selectedTopic}/>
       <ul>
         {articles.map((article) => {
           return (
