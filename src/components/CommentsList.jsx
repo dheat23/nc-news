@@ -2,9 +2,8 @@ import { useEffect, useState } from "react";
 import {useParams} from "react-router-dom";
 import { getCommentsByArticleId } from "../utils/utils";
 import CommentCard from "./CommentCard";
-const CommentsList = () => {
+const CommentsList = ({comments, setComments}) => {
     const {article_id} = useParams();
-    const [comments, setComments] = useState([]);
     useEffect(()=>{
         getCommentsByArticleId(article_id)
         .then((comments) => {

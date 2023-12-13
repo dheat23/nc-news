@@ -12,6 +12,15 @@
   background-color: black;
   margin: 10px;
 }
+
+.success {
+  color: white;
+  border: 1px solid black;
+  padding: 5px;
+  text-align: center;
+  background-color: green;
+  margin: 10px;
+}
 header {
   border: 2px solid black;
   padding: 5px;
@@ -140,7 +149,25 @@ header nav a {
   grid-column: 2 / 3;
   margin-top: 10px;
 }
-
+#comment-adder h3{
+  text-align: center;
+}
+#comment-adder-form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+}
+#comment-adder-text {
+  margin: 10px;
+  padding: 5px;
+}
+#comment-adder-btn {
+  max-width: 300px;
+  
+}
 .comment-card {
   display: grid;
   grid-template-columns: 1fr 2fr;
@@ -178,3 +205,10 @@ header nav a {
   grid-column: 1 / 2;
   margin: 10px;
 }
+
+/* @media only screen and (min-width:700px) {
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+  }
+} */
