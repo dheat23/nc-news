@@ -2,8 +2,12 @@ import axios from "axios";
 const instance = axios.create({
   baseURL: "https://dh-news-server.onrender.com/api",
 }); 
-function getAllArticles() {
-  return instance.get("/articles").then(({ data }) => {
+function getAllArticles(topic) {
+    let queryStr = "/articles"
+    if (topic !== null) {
+        queryStr += `?topic=${topic}`
+    }
+  return instance.get(queryStr).then(({ data }) => {
     return data.articles;
   });
 };
@@ -45,4 +49,11 @@ function deleteComment(id) {
     return instance.delete(`comments/${id}`)
 }
 
-export {getAllArticles, getArticleById, getCommentsByArticleId, patchArticleVotes, postComment, deleteComment}
+function getAllTopics() {
+    return instance.get(`topics`)
+    .then(({data}) => {
+        return data.topics
+    })
+}
+
+export {getAllArticles, getArticleById, getCommentsByArticleId, patchArticleVotes, postComment, deleteComment, getAllTopics}
