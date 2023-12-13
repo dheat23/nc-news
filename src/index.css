@@ -57,6 +57,21 @@ header nav a {
 .selected-topic {
   background-color: lightgreen;
 }
+#sort-bar {
+  margin: 10px;
+  border: 2px solid black;
+}
+.sort-button {
+  margin: 5px;
+  padding: 5px;
+}
+.order-button {
+  margin: 5px;
+  padding: 5px;
+}
+.selected-sort-button {
+  background-color: lightgreen;
+}
 #articles-list {
   text-align: center;
 }
