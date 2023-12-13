@@ -30,7 +30,7 @@ const CommentCard = ({ comment }) => {
       <p className="comment-date">{comment.created_at}</p>
       <p className="comment-body">{comment.body}</p>
       <p className="comment-votes">{comment.votes} votes</p>
-      {user === comment.author && deleting ? <p className="delete-in-progress">Deleting comment..</p> : <button onClick={handleDelete} className="delete-comment-btn">Delete</button>}
+      {user === comment.author && (deleting ? <p className="delete-in-progress">Deleting comment..</p> : <button onClick={handleDelete} className="delete-comment-btn">Delete</button>)}
       {error === true && <p className="error delete-comment-error">Error deleting comment, try again later</p>}
     </div>
   );
