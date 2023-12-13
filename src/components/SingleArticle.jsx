@@ -11,12 +11,17 @@ const SingleArticle = () => {
     const [comments, setComments] = useState([]);
     const [showComments, setShowComments] = useState(true);
     const [error, setError] = useState(false);
+    const [articleErr, setArticleErr] = useState(null)
     const [loading, setLoading] = useState(true)
     useEffect(()=>{
         getArticleById(article_id)
         .then((article) => {
             setArticle(article)
             setLoading(false)
+        })
+        .catch((err) => {
+            setLoading(false)
+            setArticleErr(err.response)
         })
     }, []);
     function handleCommentsClick() {
@@ -55,6 +60,9 @@ const SingleArticle = () => {
         wrapperClass="blocks-wrapper"
         colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
       />
+    }
+    if(articleErr) {
+        return <p className="error">{articleErr.status}: {articleErr.data.msg}</p>
     }
     return (
         <div id="single-article-page">

@@ -8,14 +8,19 @@ const ArticlesList = () => {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchParams, setSearchParams] = useSearchParams();
+  const [error, setError] = useState(null);
   const selectedTopic = searchParams.get("topic");
   useEffect(() => {
     getAllArticles(selectedTopic).then((articles) => {
       setArticles(articles);
+      setLoading(false);
+      setError(null);
+    })
+    .catch(err => {
       setLoading(false)
+      setError(err.response)
     });
   }, [searchParams]);
-
   if(loading) {
     return <ColorRing
     visible={true}
@@ -31,7 +36,7 @@ const ArticlesList = () => {
     <section id="articles-list">
       <h2>{selectedTopic ? "" : "All "}Articles{selectedTopic ? ` about ${selectedTopic}` : ""}</h2>
       <TopicFilter selectedTopic={selectedTopic}/>
-      <ul>
+      {error ? <p className="error">{error.status}: {error.data.msg}</p> : <ul>
         {articles.map((article) => {
           return (
             <li key={article.article_id}>
@@ -39,7 +44,7 @@ const ArticlesList = () => {
             </li>
           );
         })}
-      </ul>
+      </ul>}
     </section>
   );
 };
