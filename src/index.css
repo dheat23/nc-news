@@ -75,6 +75,11 @@ header nav a {
 #articles-list {
   text-align: center;
 }
+#articles-list h2 {
+  margin: 5px;
+  padding: 10px;
+  border: 2px solid black;
+}
 #articles-list a {
   text-decoration: none;
 }

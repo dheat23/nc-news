@@ -10,13 +10,18 @@ const SingleArticle = () => {
     const [article, setArticle] = useState([]);
     const [comments, setComments] = useState([]);
     const [showComments, setShowComments] = useState(true);
-    const [error, setError] = useState(false);
+    const [voteError, setVoteError] = useState(false);
+    const [articleErr, setArticleErr] = useState(null)
     const [loading, setLoading] = useState(true)
     useEffect(()=>{
         getArticleById(article_id)
         .then((article) => {
             setArticle(article)
             setLoading(false)
+        })
+        .catch((err) => {
+            setLoading(false)
+            setArticleErr(err.response)
         })
     }, []);
     function handleCommentsClick() {
@@ -32,10 +37,10 @@ const SingleArticle = () => {
         }
         patchArticleVotes(article_id, newVotes)
         .then(()=>{
-            setError(false)
+            setVoteError(false)
         })
         .catch((err)=>{
-            setError(true)
+            setVoteError(true)
             setArticle((currArticle) => {
                 return {...currArticle, votes: currArticle.votes - newVotes}
             })
@@ -56,6 +61,9 @@ const SingleArticle = () => {
         colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
       />
     }
+    if(articleErr) {
+        return <p className="error">{articleErr.status}: {articleErr.data.msg}</p>
+    }
     return (
         <div id="single-article-page">
             <section id="single-article">
@@ -68,7 +76,7 @@ const SingleArticle = () => {
                 
                 <button className="upvote-btn" onClick={()=>{handleVoteClick("up")}}>Upvote!</button>
                 <button className="downvote-btn" onClick={()=>{handleVoteClick("down")}}>Downvote!</button>
-                {error === true && <p className="error">An error occurred when voting, try again later</p>}
+                {voteError === true && <p className="error">An error occurred when voting, try again later</p>}
                 <p className="single-article-comments">{article.comment_count} comments</p>
                 
             </section>

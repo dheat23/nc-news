@@ -9,6 +9,7 @@ const ArticlesList = () => {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchParams, setSearchParams] = useSearchParams();
+  const [error, setError] = useState(null);
   const selectedTopic = searchParams.get("topic");
   const selectedSort = searchParams.get("sort");
   const selectedOrder = searchParams.get("order");
@@ -17,8 +18,13 @@ const ArticlesList = () => {
     getAllArticles(selectedTopic, selectedSort, selectedOrder).then(
       (articles) => {
         setArticles(articles);
+      setLoading(false);
+      setError(null);
+    })
+    .catch(err => {
         setLoading(false);
-      }
+        setError(err.response)
+    }
     );
   }, [searchParams]);
 
@@ -40,7 +46,7 @@ const ArticlesList = () => {
           wrapperClass="blocks-wrapper"
           colors={["#e15b64", "#f47e60", "#f8b26a", "#abbd81", "#849b87"]}
         />
-      ) : (
+      ) : ( error ? <p className="error">{error.status}: {error.data.msg}</p> : 
         <ul>
           {articles.map((article) => {
             return (
