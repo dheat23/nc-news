@@ -7,7 +7,7 @@ function getAllArticles(topic, sort, order) {
     if (topic || sort || order) {
         queryStr += "?"
     }
-    if (topic !== null) {
+    if (topic) {
         queryStr += `topic=${topic}`
     }
     if (sort) {
