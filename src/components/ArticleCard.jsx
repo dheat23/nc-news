@@ -8,6 +8,7 @@ const ArticleCard = ({ article }) => {
       <p className="article-card-author">{article.author}</p>
       <p className="article-card-date">{formattedTime}</p>
       <h3 className="article-card-title">{article.title}</h3>
+      <img className="article-card-img" src={article.article_img_url} />
       <p className="article-card-votes">{article.votes} votes</p>
       <p className="article-card-comments">{article.comment_count} comments</p>
     </div>

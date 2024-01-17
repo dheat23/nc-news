@@ -67,8 +67,7 @@ const SingleArticle = () => {
     return (
         <div id="single-article-page">
             <section id="single-article">
-                <p className="single-article-author">{article.author}</p>
-                <p className="single-article-date">{article.created_at}</p>
+                <p className="single-article-author">Created by {article.author} at {article.created_at}</p>
                 <h2 className="single-article-title">{article.title}</h2>
                 <img className="single-article-img" src={article.article_img_url} />
                 <p className="single-article-body">{article.body}</p>
