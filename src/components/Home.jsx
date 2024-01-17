@@ -30,7 +30,7 @@ const Home = () => {
         <section id="home">
             <h2>Welcome to Northcoders News!</h2>
             <p>Check out a random article below, or go to <Link to='/articles'>Articles</Link> to view the full list</p>
-            <button className={disable ? "disabled-btn" : ""} onClick={handleRandomClick}>View Random Article</button>
+            <button className={disable ? "disabled-btn" : ""} disabled={disable} onClick={handleRandomClick}>View Random Article</button>
             {randomNum === null ? <div id="mystery-random-article"></div> : <ArticleCard article={articles[randomNum]} />}
         </section>
     )
